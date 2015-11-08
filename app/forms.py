@@ -9,5 +9,5 @@ class LoginForm(Form):
     
 class TaperForm(Form):
     start_date = DateField('Start Date', format='%m/%d/%Y', default=date.today, validators=[DataRequired()])
-    duration = IntegerField('Duration', validators=[DataRequired()])
-    pill_size = IntegerField('Dose', validators=[DataRequired()])
+    time = IntegerField('Duration', validators=[DataRequired()])
+    dose = IntegerField('Dose', validators=[DataRequired()])

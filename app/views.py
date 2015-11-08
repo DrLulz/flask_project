@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect
 from app import app
 from .forms import LoginForm, TaperForm
+from taper import Taper
 
 @app.route('/')
 @app.route('/index')
@@ -25,9 +26,16 @@ def index():
 @app.route('/taper', methods=['GET', 'POST'])
 def taper():
     form = TaperForm()
+    t = Taper()
     if form.validate_on_submit():
-            flash('Start Date={}, Days={}, Pill={}'.format(form.start_date.data, form.duration.data, form.pill_size.data))
-            flash('Start Date={}, Days={}, Pill={}'.format(form.start_date.data, form.duration.data, form.pill_size.data))
+            args = {'1': {'dose': form.dose.data, 'time': form.time.data}}
+            
+            # Display Input
+            flash('Start Date={}, Days={}, Pill={}'.format(form.start_date.data, form.time.data, form.dose.data))
+            
+            for n in t.calc(args):
+                flash('{}mg - Quantity: {}'.format(n[0], str(n[1])))
+                
             return redirect('/taper')
     return render_template('taper.html',
                             title='Drug Taper',
