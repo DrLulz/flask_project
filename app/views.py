@@ -27,7 +27,7 @@ def taper():
             args = {'1': {'dose': form.dose.data, 'time': form.time.data}}
             
             # Display Input
-            flash('Start Date={}, Days={}, Pill={}'.format(form.start_date.data, form.time.data, form.dose.data))
+            flash('Start Date={}, Days={}, Dose/Day={}'.format(form.start_date.data, form.time.data, form.dose.data))
             
             for n in t.calc(args):
                 flash('Prescribe: Quantity-{} Dose-{}mg'.format(str(n[1]), n[0]))
