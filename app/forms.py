@@ -7,6 +7,6 @@ class LoginForm(Form):
     remember_me = BooleanField('remember_me', default=False)
     
 class TaperForm(Form):
-    start_date = DateField('Start Date', format='%m/%d/%Y')
-    duration = IntegerField('Duration')
-    pill_size = IntegerField('Pill Size')
+    start_date = DateField('Start Date', format='%m/%d/%Y', validators=[DataRequired()])
+    duration = IntegerField('Duration', validators=[DataRequired()])
+    pill_size = IntegerField('Pill Size', validators=[DataRequired()])
