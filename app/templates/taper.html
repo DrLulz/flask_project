@@ -1,0 +1,22 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Steroid Taper</h1>
+  <form action="" method="post" name="taper">
+      {{ form.hidden_tag() }}
+      <p>
+          Enter Start Date:<br>
+          {{ form.start_date }}<br>
+      </p>
+      <p>
+          Duration:<br>
+          {{ form.duration }}<br>
+      </p>
+      <p>
+          Pill Size:<br>
+          {{ form.pill_size }}<br>
+      </p>
+      <p><input type="submit" value="Sign In"></p>
+  </form>
+{% endblock %}

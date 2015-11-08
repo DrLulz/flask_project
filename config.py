@@ -7,3 +7,11 @@ OPENID_PROVIDERS = [
     {'name': 'AOL', 'url': 'http://openid.aol.com/<username>'},
     {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
     {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
+    
+PILL_SIZES = [
+    {'size': '50'},
+    {'size': '20'},
+    {'size': '10'},
+    {'size': '5'},
+    {'size': '2.5'},
+    {'size': '1'}]
