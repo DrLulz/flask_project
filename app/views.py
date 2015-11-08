@@ -6,15 +6,11 @@ from taper import Taper
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'nickname': 'Miguel'}  # fake user
+    user = {'nickname': 'user'}  # fake user
     posts = [  # fake array of posts
         { 
-            'author': {'nickname': 'John'}, 
-            'body': 'Beautiful day in Portland!' 
-        },
-        { 
-            'author': {'nickname': 'Susan'}, 
-            'body': 'The Avengers movie was so cool!' 
+            'author': {'nickname': 'Faulkner'}, 
+            'body': 'To say that Mr. Hollis is noncompliant is similar to saying that the surface of the sun is warm.' 
         }
     ]
     return render_template("index.html",
