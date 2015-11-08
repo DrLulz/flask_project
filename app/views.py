@@ -27,8 +27,7 @@ def taper():
     form = TaperForm()
     return render_template('taper.html',
                             title='Drug Taper',
-                            form=form,
-                            sizes=app.config['PILL_SIZES'])
+                            form=form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
