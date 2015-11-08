@@ -25,6 +25,9 @@ def index():
 @app.route('/taper', methods=['GET', 'POST'])
 def taper():
     form = TaperForm()
+    if form.validate_on_submit():
+            flash('Start Date={}, Days={}, Pill={}'.format(form.start_date.data, form.duration.data, form.pill_size.data))
+            return redirect('/taper')
     return render_template('taper.html',
                             title='Drug Taper',
                             form=form,
