@@ -11,6 +11,7 @@ class TaperForm(Form):
     date_1 = DateField('Start Date', format='%m/%d/%Y', default=date.today, validators=[DataRequired()])
     time_1 = IntegerField('Duration', validators=[DataRequired()])
     dose_1 = IntegerField('Dose', validators=[DataRequired()])
+    
     date_2 = DateField('Start Date', format='%m/%d/%Y', default=date.today, validators=[DataRequired()])
     time_2 = IntegerField('Duration', validators=[DataRequired()])
     dose_2 = IntegerField('Dose', validators=[DataRequired()])

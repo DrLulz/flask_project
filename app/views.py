@@ -30,7 +30,7 @@ def taper():
             
             # Display Input
             flash('Phase 1: Start Date={}, Days={}, Dose/Day={}'.format(form.date_1.data, form.time_1.data, form.dose_1.data))
-            flash('Phase 1: Start Date={}, Days={}, Dose/Day={}'.format(form.date_2.data, form.time_2.data, form.dose_2.data))
+            flash('Phase 2: Start Date={}, Days={}, Dose/Day={}'.format(form.date_2.data, form.time_2.data, form.dose_2.data))
             
             for n in t.calc(args):
                 flash('Prescribe: Quantity-{} Dose-{}mg'.format(str(n[1]), n[0]))
