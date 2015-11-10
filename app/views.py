@@ -24,7 +24,7 @@ def taper():
     form = TaperForm()
     t = Taper()
     if form.validate_on_submit():
-            args = {'1': {'dose': form.dose_1.data, 'time': form.time_1.data}
+            args = {'1': {'dose': form.dose_1.data, 'time': form.time_1.data},
                     '2': {'dose': form.dose_2.data, 'time': form.time_2.data}
                     }
             
