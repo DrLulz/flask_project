@@ -33,7 +33,7 @@ def taper():
             flash('Phase 2: Start Date={}, Days={}, Dose/Day={}'.format(form.date_2.data, form.time_2.data, form.dose_2.data))
             
             for n in t.calc(args):
-                flash('Prescribe: {}mg x {}'.format( n[0]), str(n[1]) )
+                flash( 'Prescribe: {}mg x {}'.format( n[0], str(n[1]) ) )
                 
             return redirect('/taper')
     return render_template('taper.html',
