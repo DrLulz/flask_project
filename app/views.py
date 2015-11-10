@@ -24,10 +24,13 @@ def taper():
     form = TaperForm()
     t = Taper()
     if form.validate_on_submit():
-            args = {'1': {'dose': form.dose.data, 'time': form.time.data}}
+            args = {'1': {'dose': form.dose_1.data, 'time': form.time_1.data}
+                    '2': {'dose': form.dose_2.data, 'time': form.time_2.data}
+                    }
             
             # Display Input
-            flash('Start Date={}, Days={}, Dose/Day={}'.format(form.start_date.data, form.time.data, form.dose.data))
+            flash('Phase 1: Start Date={}, Days={}, Dose/Day={}'.format(form.date_1.data, form.time_1.data, form.dose_1.data))
+            flash('Phase 1: Start Date={}, Days={}, Dose/Day={}'.format(form.date_2.data, form.time_2.data, form.dose_2.data))
             
             for n in t.calc(args):
                 flash('Prescribe: Quantity-{} Dose-{}mg'.format(str(n[1]), n[0]))

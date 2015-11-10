@@ -5,18 +5,34 @@
   <h1>Steroid Taper</h1>
   <form action="" method="post" name="taper">
       {{ form.hidden_tag() }}
-      <p>
-          Start Date:<br>
-          {{ form.start_date }}<br>
-      </p>
-      <p>
-          Days:<br>
-          {{ form.time }}<br>
-      </p>
-      <p>
-          Dose:<br>
-          {{ form.dose }}<br>
-      </p>
+      <div>
+		  <p>
+	          Start Date:<br>
+	          {{ form.date_1 }}<br>
+	      </p>
+	      <p>
+	          Days:<br>
+	          {{ form.time_1 }}<br>
+	      </p>
+	      <p>
+	          Dose:<br>
+	          {{ form.dose_1 }}<br>
+	      </p>
+	  </div>
+      <div>
+		  <p>
+	          Start Date:<br>
+	          {{ form.date_2 }}<br>
+	      </p>
+	      <p>
+	          Days:<br>
+	          {{ form.time_2 }}<br>
+	      </p>
+	      <p>
+	          Dose:<br>
+	          {{ form.dose_2 }}<br>
+	      </p>
+	  </div>
       <p><input type="submit" value="Calculate Taper"></p>
   </form>
 {% endblock %}
