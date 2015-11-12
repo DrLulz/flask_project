@@ -9,7 +9,7 @@ OPENID_PROVIDERS = [
     {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
     
 PILL_SIZES = [
-    {'size': '30'},
+    {'size': '50'},
     {'size': '20'},
     {'size': '10'},
     {'size': '5'},
