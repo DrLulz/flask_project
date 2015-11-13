@@ -57,9 +57,9 @@ def login():
                            providers=app.config['OPENID_PROVIDERS'])
 
 
-webhooks = HookRoutes()
-app.register_blueprint(webhooks)
+#webhooks = HookRoutes()
+#app.register_blueprint(webhooks)
 
-@webhooks.hook('ping')
-def ping(data, guid):
-    return 'pong'
+#@webhooks.hook('ping')
+#def ping(data, guid):
+#    return 'pong'
