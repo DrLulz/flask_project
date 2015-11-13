@@ -1,5 +1,6 @@
 {
     "DrLulz/flask_project": {
-        "path": "/home/www/flask_project"
+        "path": "/home/www/flask_project",
+        "action": [["git", "pull", "origin", "master"], ],
     }
 }
