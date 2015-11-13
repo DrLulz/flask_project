@@ -53,3 +53,7 @@ def login():
                            title='Sign In',
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
+
+@webhooks.hook('ping')
+def ping(data, guid):
+    return 'pong'
