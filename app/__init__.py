@@ -5,7 +5,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 #new
-app.config['KEY'] = b'dudicle'
 webhooks = HookRoutes()
 app.register_blueprint(webhooks)
 
