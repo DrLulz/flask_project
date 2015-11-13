@@ -2,7 +2,6 @@ from flask import render_template, flash, redirect
 from app import app
 from .forms import LoginForm, TaperForm
 from taper import Taper
-from hookserver import HookRoutes
 
 @app.route('/')
 @app.route('/index')
@@ -54,10 +53,3 @@ def login():
                            title='Sign In',
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
-
-webhooks = HookRoutes()
-app.register_blueprint(webhooks)
-
-@webhooks.hook('ping')
-def ping(data, guid):
-    return 'pong'
