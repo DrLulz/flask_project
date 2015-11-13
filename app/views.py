@@ -1,6 +1,4 @@
-#from flask import register_blueprint, render_template, flash, redirect
 from flask import Flask, render_template, flash, redirect
-import hookserver
 from app import app
 from .forms import LoginForm, TaperForm
 from taper import Taper
@@ -56,10 +54,3 @@ def login():
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
 
-
-#webhooks = HookRoutes()
-#app.register_blueprint(webhooks)
-
-#@webhooks.hook('ping')
-#def ping(data, guid):
-#    return 'pong'
