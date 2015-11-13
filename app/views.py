@@ -1,5 +1,5 @@
-from flask import Flask, render_template, flash, redirect
-#from flask import render_template, flash, redirect
+#from flask import Flask, render_template, flash, redirect
+from flask import render_template, flash, redirect
 from hookserver import HookRoutes
 from app import app
 from .forms import LoginForm, TaperForm
