@@ -1,4 +1,14 @@
-from flask import render_template, flash, redirect
+from flask import Flask, render_template, flash, redirect, request, abort
+#from flask import render_template, flash, redirect
+import io
+import os
+import re
+import sys
+import json
+import subprocess
+import requests
+import ipaddress
+
 from app import app
 from .forms import LoginForm, TaperForm
 from taper import Taper
@@ -53,3 +63,46 @@ def login():
                            title='Sign In',
                            form=form,
                            providers=app.config['OPENID_PROVIDERS'])
+
+
+@app.route("/pull", methods=['POST'])
+def pull():
+    # Store the IP address blocks that github uses for hook requests.
+    hook_blocks = requests.get('https://api.github.com/meta').json()['hooks']
+
+    # Check if the POST request if from github.com
+    for block in hook_blocks:
+        ip = ipaddress.ip_address(u'%s' % request.remote_addr)
+        if ipaddress.ip_address(ip) in ipaddress.ip_network(block):
+            break  # the remote_addr is within the network range of github
+    else:
+        abort(403)
+
+    if request.headers.get('X-GitHub-Event') == "ping":
+        return json.dumps({'msg': 'Hi!'})
+    if request.headers.get('X-GitHub-Event') != "push":
+        return json.dumps({'msg': "wrong event type"})
+
+    repos = json.loads(io.open('repos.json', 'r').read())
+
+    payload = json.loads(request.data)
+    repo_meta = {
+        'name': payload['repository']['name'],
+        'owner': payload['repository']['owner']['name'],
+    }
+    match = re.match(r"refs/heads/(?P<branch>.*)", payload['ref'])
+    repo = None
+    if match:
+        repo_meta['branch'] = match.groupdict()['branch']
+        repo = repos.get('{owner}/{name}/branch:{branch}'.format(**repo_meta), None)
+    if repo is None:
+        repo = repos.get('{owner}/{name}'.format(**repo_meta), None)
+    if repo and repo.get('path', None):
+        if repo.get('action', None):
+            for action in repo['action']:
+                subprocess.Popen(action,
+                                 cwd=repo['path'])
+        else:
+            subprocess.Popen(["git", "pull", "origin", "master"],
+                             cwd=repo['path'])
+    return 'OK'
